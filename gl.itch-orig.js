@@ -83,7 +83,7 @@
 		// console.log(u);
 		
 		window[cb] = function(b64){
-			// console.log('in base64-callback from proxy.');
+		//	console.log('in base64-callback from proxy.');
 			img.setAttribute('x-original', b64);	
 			img.setAttribute('x-status', 'loaded');
 		}
@@ -168,20 +168,19 @@
 				var imagetype = el.getAttribute('x-type');
 				var imagedata = el.getAttribute('x-original');
 				
-				console.log( imagetype );
+		//		console.log( imagetype );
+		//		console.log( imagedata.length );
 				
 				if (imagedata.length > 100) {
 					var chs = '0123456789ABCDEF';
-					var bytes = imagedata;
 					var n = 1 + Math.round(Math.random() * maxg * a / 200);
 					// console.log('n='+n);
 					for ( var k = 0; k < n; k++) {
 						var i = 10 + Math.round(Math.random() * (bytes.length - 10));
 						// var ch = bytes.substr(i,1);
 						var ch = chs[ Math.floor( Math.random() * 16 ) ];
-						bytes = bytes.substr(0, i) + ch + bytes.substr(i+ch.length);
+						imagedata = imagedata.substr(0, i) + ch + imagedata.substr(i+ch.length);
 					}
-					var str = bytes;
 					/*
 					var bytes = Base64.decode(imagedata);
 					var n = 1 + Math.round(Math.random() * maxg / 20);
@@ -192,8 +191,9 @@
 					var str = Base64.encode(bytes);
 					*/					
 					try {
-						el.src = 'data:' + imagetype + ';base64,' + str;
+						el.src = 'data:' + imagetype + ';base64,' + imagedata;
 					} catch (e) {
+						// console.log(e);
 					}	
 				}
 			}
