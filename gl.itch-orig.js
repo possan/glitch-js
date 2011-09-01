@@ -176,7 +176,7 @@
 					var n = 1 + Math.round(Math.random() * maxg * a / 200);
 					// console.log('n='+n);
 					for ( var k = 0; k < n; k++) {
-						var i = 10 + Math.round(Math.random() * (bytes.length - 10));
+						var i = 10 + Math.round(Math.random() * (imagedata.length - 10));
 						// var ch = bytes.substr(i,1);
 						var ch = chs[ Math.floor( Math.random() * 16 ) ];
 						imagedata = imagedata.substr(0, i) + ch + imagedata.substr(i+ch.length);
